@@ -31,7 +31,16 @@ if (process.versions.electron) {
 
 //Requeries
 var fs = require('fs');
-var SQL = require('./sql.js/sql-asm-memory-growth.js');
+var initSqlJs = require('./sql.js/sql-asm-memory-growth.js');
+let SQL
+initSqlJs({
+	// Required to load the wasm binary asynchronously. Of course, you can host it wherever you want
+	// You can omit locateFile completely when running in node
+	locateFile: file => `./sql.js/sql-wasm.wasm`
+}).then(SQL => {
+	SQL = res
+});
+
 var path = require('path');
 var events = require('events');
 
