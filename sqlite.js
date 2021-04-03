@@ -192,6 +192,7 @@ sqlite.prototype.pvSELECT = function (sql, where) {
 			resultado.push(stmt.getAsObject());
 		}
 		stmt.free();
+		stmt.freemem();
 		return resultado;
 	} catch (x) {
 		if (this.debug) {
@@ -222,6 +223,7 @@ sqlite.prototype.pvDELETE = function (sql, where) {
 		stmt.bind(where);
 		stmt.step();
 		stmt.free();
+		stmt.freemem();
 		this.write();
 		return this.db.getRowsModified();
 	} catch (x) {
@@ -253,6 +255,7 @@ sqlite.prototype.pvINSERT = function (sql, data) {
 		stmt.bind(data);
 		stmt.step();
 		stmt.free();
+		stmt.freemem();
 		var last = this.pvSELECT("SELECT last_insert_rowid()");
 		this.write();
 		return last[0]['last_insert_rowid()'];
@@ -286,6 +289,7 @@ sqlite.prototype.pvUPDATE = function (sql, data) {
 		stmt.bind(data);
 		stmt.step();
 		stmt.free();
+		stmt.freemem();
 		this.write();
 		return this.db.getRowsModified();
 	} catch (x) {
