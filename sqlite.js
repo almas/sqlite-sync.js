@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-//Testa se é electron, e troca o stderr e stdout para console.
+//Testa se ï¿½ electron, e troca o stderr e stdout para console.
 //Test if is Electon, and change sterr e stdout for console.
 if (process.versions.electron) {
 	process.stderr.write = console.error.bind(console);
@@ -31,7 +31,7 @@ if (process.versions.electron) {
 
 //Requeries
 var fs = require('fs');
-var SQL = require('sql.js');
+var SQL = require('sql-memory-growth.js'); // var SQL = require('sql.js');
 var path = require('path');
 var events = require('events');
 
