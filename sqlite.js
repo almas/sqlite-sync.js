@@ -31,7 +31,7 @@ if (process.versions.electron) {
 
 //Requeries
 var fs = require('fs');
-var SQL = require('sql.js');
+var SQL = require('./sql.js/sql-asm-memory-growth.js');
 var path = require('path');
 var events = require('events');
 
